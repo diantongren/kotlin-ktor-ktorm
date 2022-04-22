@@ -1,9 +1,6 @@
 package cn.diantongren
 
-import cn.diantongren.plugins.configureHTTP
-import cn.diantongren.plugins.configureMonitoring
-import cn.diantongren.plugins.configureRouting
-import cn.diantongren.plugins.configureSerialization
+import cn.diantongren.plugins.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
@@ -14,5 +11,6 @@ fun main() {
         configureSerialization()
         configureHTTP()
         configureMonitoring()
+        koin()
     }.start(wait = true)
 }

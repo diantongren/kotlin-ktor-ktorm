@@ -3,6 +3,8 @@ val kotlinVersion: String by project
 val logbackVersion: String by project
 val ktormVersion: String by project
 val mysqlVersion: String by project
+val koinVersion: String by project
+val hikariVersion: String by project
 
 plugins {
     application
@@ -33,6 +35,8 @@ dependencies {
     implementation("mysql:mysql-connector-java:$mysqlVersion")
     implementation("org.ktorm:ktorm-jackson:$ktormVersion")
     implementation("org.ktorm:ktorm-support-mysql:$ktormVersion")
+    implementation("io.insert-koin:koin-ktor:$koinVersion")
+    implementation ("com.zaxxer:HikariCP:$hikariVersion")
 
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
