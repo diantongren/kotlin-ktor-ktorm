@@ -6,9 +6,11 @@ import cn.diantongren.service.DatabaseFactory
 import io.ktor.application.*
 import org.koin.dsl.module
 import org.koin.ktor.ext.Koin
+import org.ktorm.database.Database
 
 val databaseKoinModule = module {
-    single { DatabaseFactory().database }
+    //single<DatabaseFactory> { DatabaseFactory() }
+    single<Database> { DatabaseFactory().database}
 }
 
 val serviceKoinModule = module {

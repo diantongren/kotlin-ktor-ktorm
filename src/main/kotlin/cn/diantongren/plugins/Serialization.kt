@@ -1,12 +1,11 @@
 package cn.diantongren.plugins
 
-import cn.diantongren.model.User
-import io.ktor.jackson.*
-import com.fasterxml.jackson.databind.*
-import io.ktor.features.*
+import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import io.ktor.application.*
+import io.ktor.features.*
+import io.ktor.jackson.*
 import io.ktor.response.*
-import io.ktor.request.*
 import io.ktor.routing.*
 import org.ktorm.jackson.KtormModule
 
@@ -15,6 +14,7 @@ fun Application.configureSerialization() {
         jackson {
             enable(SerializationFeature.INDENT_OUTPUT)
             registerModule(KtormModule())
+            registerModule(JavaTimeModule())
         }
     }
 

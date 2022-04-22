@@ -10,9 +10,9 @@ class DatabaseFactory {
     private fun hikari() : HikariDataSource {
         val config = HikariConfig().apply {
             driverClassName = "com.mysql.cj.jdbc.Driver"
-            jdbcUrl = "jdbc:mysql://localhost:3306/ktorm-example?serverTimezone=UTC&useSSL=false"
-            username = "root"
-            password = "123456"
+            jdbcUrl = "jdbc:mysql://rm-bp19dz57310ul43604o.mysql.rds.aliyuncs.com:3306/real_world"
+            username = "diantongren"
+            password = "Yanyuxi19990110"
         }
         return HikariDataSource(config)
     }

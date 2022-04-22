@@ -62,7 +62,6 @@ data class LoginUser(val user: User) {
 
 data class UpdateUser(val user: User) {
     data class User(
-        val email: String? = null,
         val username: String? = null,
         val bio: String? = null,
         val image: String? = null,
@@ -80,7 +79,7 @@ data class UserResponse(val user: User) {
     )
 
     companion object {
-        fun fromUser(user: cn.diantongren.model.User, token: String): UserResponse = UserResponse(
+        fun fromUser(user: cn.diantongren.model.User, token: String = ""): UserResponse = UserResponse(
             user = User(
                 email = user.email,
                 token = token,

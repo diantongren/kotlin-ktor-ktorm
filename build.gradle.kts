@@ -15,9 +15,7 @@ group = "cn.diantongren"
 version = "0.0.1"
 application {
     mainClass.set("cn.diantongren.ApplicationKt")
-
-    val isDevelopment: Boolean = project.ext.has("development")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
 
 repositories {
@@ -37,6 +35,7 @@ dependencies {
     implementation("org.ktorm:ktorm-support-mysql:$ktormVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
     implementation ("com.zaxxer:HikariCP:$hikariVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
 
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")

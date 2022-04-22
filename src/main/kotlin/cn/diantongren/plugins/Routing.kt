@@ -7,25 +7,16 @@ import io.ktor.features.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import org.koin.ktor.ext.inject
-import org.ktorm.database.Database
+import java.time.LocalDateTime
 
 fun Application.configureRouting() {
-    val database: Database by inject()
     val authService: AuthService by inject()
 
     routing {
-        get("/") {
-            call.respondText("Hello World!")
+        get("/pings") {
+            call.respond(LocalDateTime.now().toString())
         }
-
-//        val database = Database.connect(
-//            url = "jdbc:mysql://localhost:3306/ktorm-example?serverTimezone=UTC&useSSL=false",
-//            driver = "com.mysql.cj.jdbc.Driver",
-//            user = "root",
-//            password = "123456",
-//            logger = ConsoleLogger(threshold = LogLevel.INFO)
-//        )
-        auth(authService)
+        auth(authService, simpleJWT)
 
         install(StatusPages) {
             statusPage()
