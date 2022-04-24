@@ -15,12 +15,20 @@ import io.ktor.routing.*
 
 fun Route.auth(authService: AuthService, simpleJWT: SimpleJWT) {
 
+    /**
+     * User Register
+     * POST /users
+     */
     post("/users") {
         val registerUser = call.receive<RegisterUser>()
         val newUser = authService.register(registerUser)
         call.respond(UserResponse.fromUser(newUser, simpleJWT.sign(newUser.id)))
     }
 
+    /**
+     * User Login
+     * POST /users/login
+     */
     post("/users/login") {
         val loginUser = call.receive<LoginUser>()
         val user = authService.loginAndGetUser(loginUser.user.email, loginUser.user.password)
@@ -31,7 +39,7 @@ fun Route.auth(authService: AuthService, simpleJWT: SimpleJWT) {
 
         /*
             Get Current User
-            GET /api/user
+            GET /user
          */
         get("/user") {
             val user = authService.getUserById(call.userId())
@@ -40,7 +48,7 @@ fun Route.auth(authService: AuthService, simpleJWT: SimpleJWT) {
 
         /*
             Update User
-            PUT /api/user
+            PUT /user
          */
         put("/user") {
             val updateUser = call.receive<UpdateUser>()

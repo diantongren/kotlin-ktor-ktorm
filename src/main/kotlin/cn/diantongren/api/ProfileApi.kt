@@ -9,6 +9,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 fun Route.profile(profileService: ProfileService) {
+    // without token
     authenticate(optional = true) {
 
         /*
@@ -17,7 +18,6 @@ fun Route.profile(profileService: ProfileService) {
          */
         get("/profiles/{username}") {
             val username = call.param("username")
-//            val currentUserId = call.principal<UserIdPrincipal>()?.name?.toLong()
             val currentUserId = call.userId()
             val profile = profileService.getProfile(username, currentUserId)
             call.respond(profile)
