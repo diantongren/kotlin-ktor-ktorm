@@ -1,0 +1,658 @@
+{
+	"info": {
+		"_postman_id": "fa691917-fd41-4f89-9075-d18f483c4add",
+		"name": "ktor-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"username\": \"lisi\",\r\n        \"email\": \"lisi@diantongren.cn\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/users",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"username\": \"lisi\",\r\n        \"email\": \"lisi@diantongren.cn\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/users",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email\": \"lisi@diantongren.cn\",\n        \"token\": \"1234\",\n        \"username\": \"lisi\",\n        \"bio\": \"\",\n        \"image\": \"\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "pings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/pings",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"pings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "pings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/pings",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"pings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "2022-04-22T23:10:08.204608600"
+						}
+					]
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"email\": \"zhangsan@diantongren.cn\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/users/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"email\": \"zhangsan@diantongren.cn\",\r\n        \"password\": \"123456\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/users/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email\": \"zhangsan@diantongren.cn\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjIifQ.QHPvDFNQJHc29M-GLYEVQsuv61qAVe5TnISi9dO13xs\",\n        \"username\": \"zhangsan\",\n        \"bio\": \"\",\n        \"image\": \"\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/user",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "current user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/user",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email\": \"yardx@foxmail.com\",\n        \"token\": \"\",\n        \"username\": \"diantongren\",\n        \"bio\": \"\",\n        \"image\": \"\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "user update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"bio\": \"hello world\",\r\n        \"image\": \"https://diantongren.cn\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/user",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"bio\": \"hello world\",\r\n        \"image\": \"https://diantongren.cn\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/user",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email\": \"yardx@foxmail.com\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IlVzZXJ7aWQ9MSwgZW1haWw9eWFyZHhAZm94bWFpbC5jb20sIHVzZXJuYW1lPWRpYW50b25ncmVuLCBwYXNzd29yZD0xMjM0NTYsIGltYWdlPWh0dHBzOi8vZGlhbnRvbmdyZW4uY24sIGJpbz1oZWxsbyB3b3JsZH0ifQ.ixStU_7GlCSjRBiGg6LrGzCZy85WWDzRGaiKdBhqPtg\",\n        \"username\": \"diantongren\",\n        \"bio\": \"hello world\",\n        \"image\": \"https://diantongren.cn\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "list users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/users",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "list users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/users",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"user\": {\n            \"email\": \"yardx@foxmail.com\",\n            \"token\": \"\",\n            \"username\": \"diantongren\",\n            \"bio\": \"hello world\",\n            \"image\": \"https://diantongren.cn\"\n        }\n    },\n    {\n        \"user\": {\n            \"email\": \"zhangsan@diantongren.cn\",\n            \"token\": \"\",\n            \"username\": \"zhangsan\",\n            \"bio\": \"\",\n            \"image\": \"\"\n        }\n    },\n    {\n        \"user\": {\n            \"email\": \"lisi@diantongren.cn\",\n            \"token\": \"\",\n            \"username\": \"lisi\",\n            \"bio\": \"\",\n            \"image\": \"\"\n        }\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "get profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/profiles/diantongren",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profiles",
+								"diantongren"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get profile without token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/profiles/diantongren",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"profiles",
+										"diantongren"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"profile\": {\n        \"username\": \"diantongren\",\n        \"bio\": \"hello world\",\n        \"image\": \"https://diantongren.cn\",\n        \"following\": false\n    }\n}"
+						},
+						{
+							"name": "get profile with follower token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/profiles/diantongren",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"profiles",
+										"diantongren"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"profile\": {\n        \"username\": \"diantongren\",\n        \"bio\": \"hello world\",\n        \"image\": \"https://diantongren.cn\",\n        \"following\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "follow user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/profiles/diantongren/follow",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profiles",
+								"diantongren",
+								"follow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "follow user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/profiles/diantongren/follow",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"profiles",
+										"diantongren",
+										"follow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"profile\": {\n        \"username\": \"diantongren\",\n        \"bio\": \"hello world\",\n        \"image\": \"https://diantongren.cn\",\n        \"following\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "unfollow user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/profiles/diantongren/follow",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"profiles",
+								"diantongren",
+								"follow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "unfollow user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}/profiles/diantongren/follow",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"profiles",
+										"diantongren",
+										"follow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"profile\": {\n        \"username\": \"diantongren\",\n        \"bio\": \"hello world\",\n        \"image\": \"https://diantongren.cn\",\n        \"following\": false\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
