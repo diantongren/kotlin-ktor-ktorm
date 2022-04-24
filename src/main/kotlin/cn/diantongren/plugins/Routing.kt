@@ -1,7 +1,11 @@
 package cn.diantongren.plugins
 
+import cn.diantongren.api.article
 import cn.diantongren.api.auth
+import cn.diantongren.api.profile
+import cn.diantongren.service.ArticleService
 import cn.diantongren.service.AuthService
+import cn.diantongren.service.ProfileService
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -11,7 +15,8 @@ import java.time.LocalDateTime
 
 fun Application.configureRouting() {
     val authService: AuthService by inject()
-//    val profileService: ProfileService by inject()
+    val profileService: ProfileService by inject()
+    val articleService: ArticleService by inject()
 
     routing {
         get("/pings") {
@@ -19,7 +24,8 @@ fun Application.configureRouting() {
         }
 
         auth(authService, simpleJWT)
-//        profile(profileService)
+        profile(profileService)
+        article(articleService)
 
         install(StatusPages) {
             statusPage()

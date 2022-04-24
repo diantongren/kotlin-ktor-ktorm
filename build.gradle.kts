@@ -5,6 +5,7 @@ val ktormVersion: String by project
 val mysqlVersion: String by project
 val koinVersion: String by project
 val hikariVersion: String by project
+val jacksonJsrVersion: String by project
 
 plugins {
     application
@@ -35,7 +36,7 @@ dependencies {
     implementation("org.ktorm:ktorm-support-mysql:$ktormVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
     implementation("com.zaxxer:HikariCP:$hikariVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonJsrVersion")
 
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")

@@ -92,7 +92,7 @@ object FavoriteArticles : Table<FavoriteArticle>("t_favorite_article") {
 val Database.articles get() = this.sequenceOf(Articles)
 val Database.tags get() = this.sequenceOf(Tags)
 val Database.articleTags get() = this.sequenceOf(ArticleTags)
-val Database.favoriteTags get() = this.sequenceOf(FavoriteArticles)
+val Database.favoriteArticles get() = this.sequenceOf(FavoriteArticles)
 
 data class NewArticle(val article: Article) {
 

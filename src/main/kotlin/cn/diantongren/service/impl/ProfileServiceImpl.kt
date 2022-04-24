@@ -10,6 +10,7 @@ import cn.diantongren.util.UserDoesNotExists
 import org.ktorm.dsl.and
 import org.ktorm.dsl.eq
 import org.ktorm.entity.add
+import org.ktorm.entity.any
 import org.ktorm.entity.find
 import org.ktorm.entity.removeIf
 
@@ -54,10 +55,6 @@ class ProfileServiceImpl : ProfileService {
 fun getProfileByUser(user: User?, following: Boolean = false) =
     ProfileResponse(profile = user?.run { ProfileResponse.Profile(username, bio, image, following) })
 
-fun isFollower(user: User, follower: User?): Boolean {
-    if (follower != null) {
-        database.followings.find { (it.userId eq user.id) and (it.followerId eq follower.id) } ?: return false
-        return true
-    }
-    return false
-}
+fun isFollower(user: User, follower: User?) =
+    if (follower != null) database.followings.any { (it.userId eq user.id) and (it.followerId eq follower.id) } else false
+
