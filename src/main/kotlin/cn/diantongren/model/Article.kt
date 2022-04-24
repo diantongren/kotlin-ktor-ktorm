@@ -5,10 +5,13 @@ import org.ktorm.entity.Entity
 import org.ktorm.entity.sequenceOf
 import org.ktorm.schema.*
 import java.time.LocalDateTime
+import java.util.*
 
 interface Article : Entity<Article> {
 
-    companion object : Entity.Factory<Article>()
+    companion object : Entity.Factory<Article>() {
+        fun generateSlug(title: String) = title.lowercase(Locale.US).replace(" ", "-")
+    }
 
     var id: Long
     var slug: String

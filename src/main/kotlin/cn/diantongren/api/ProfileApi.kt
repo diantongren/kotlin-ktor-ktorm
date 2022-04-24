@@ -9,12 +9,12 @@ import io.ktor.response.*
 import io.ktor.routing.*
 
 fun Route.profile(profileService: ProfileService) {
-    // without token
+
     authenticate(optional = true) {
 
-        /*
-            Get Profile
-            GET /profiles/:username
+        /**
+         *  Get Profile
+         *  GET /profiles/:username
          */
         get("/profiles/{username}") {
             val username = call.param("username")
@@ -27,9 +27,9 @@ fun Route.profile(profileService: ProfileService) {
 
     authenticate {
 
-        /*
-            Follow user
-            POST /profiles/:username/follow
+        /**
+         *  Follow user
+         *  POST /profiles/:username/follow
          */
         post("/profiles/{username}/follow") {
             val username = call.param("username")
@@ -38,14 +38,14 @@ fun Route.profile(profileService: ProfileService) {
             call.respond(profile)
         }
 
-        /*
-            Unfollow user
-            DELETE /profiles/:username/follow
+        /**
+         *  Unfollow user
+         *  DELETE /profiles/:username/follow
          */
         delete("/profiles/{username}/follow") {
             val username = call.param("username")
             val currentUserId = call.userId()
-                val profile = profileService.changeFollowStatus(username, currentUserId, false)
+            val profile = profileService.changeFollowStatus(username, currentUserId, false)
             call.respond(profile)
         }
 
