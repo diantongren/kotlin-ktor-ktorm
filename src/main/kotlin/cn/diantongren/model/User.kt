@@ -45,7 +45,7 @@ object Followings : Table<Following>("t_following") {
 
     val id = long("id").primaryKey().bindTo { it.id }
     val userId = long("user_id").references(Users) { it.user }
-    val followingId = long("following_id").references(Users) { it.follower }
+    val followerId = long("follower_id").references(Users) { it.follower }
 
 }
 
