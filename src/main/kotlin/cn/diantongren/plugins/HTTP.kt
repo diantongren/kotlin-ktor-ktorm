@@ -1,10 +1,8 @@
 package cn.diantongren.plugins
 
-import io.ktor.http.*
-import io.ktor.features.*
 import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
+import io.ktor.features.*
+import io.ktor.http.*
 
 fun Application.configureHTTP() {
     install(CORS) {
@@ -14,7 +12,7 @@ fun Application.configureHTTP() {
         method(HttpMethod.Patch)
         header(HttpHeaders.Authorization)
         header("MyCustomHeader")
-        anyHost() // @TODO: Don't do this in production if possible. Try to limit it.
+        anyHost()
     }
 
 }
