@@ -2,9 +2,11 @@ package cn.diantongren.plugins
 
 import cn.diantongren.api.article
 import cn.diantongren.api.auth
+import cn.diantongren.api.comment
 import cn.diantongren.api.profile
 import cn.diantongren.service.ArticleService
 import cn.diantongren.service.AuthService
+import cn.diantongren.service.CommentService
 import cn.diantongren.service.ProfileService
 import io.ktor.application.*
 import io.ktor.features.*
@@ -17,6 +19,7 @@ fun Application.configureRouting() {
     val authService: AuthService by inject()
     val profileService: ProfileService by inject()
     val articleService: ArticleService by inject()
+    val commentService: CommentService by inject()
 
     routing {
         get("/pings") {
@@ -26,6 +29,7 @@ fun Application.configureRouting() {
         auth(authService, simpleJWT)
         profile(profileService)
         article(articleService)
+        comment(commentService)
 
         install(StatusPages) {
             statusPage()
