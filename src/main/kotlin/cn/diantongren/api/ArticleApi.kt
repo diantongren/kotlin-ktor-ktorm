@@ -28,16 +28,6 @@ fun Route.article(articleService: ArticleService) {
         }
 
         /**
-         *  Create Article
-         *  POST /articles
-         */
-        post("/articles") {
-            val newArticle = call.receive<NewArticle>()
-            val article = articleService.createArticle(call.userId(), newArticle)
-            call.respond(article)
-        }
-
-        /**
          *  Update Article
          *  PUT /articles/:slug
          */

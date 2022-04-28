@@ -7,6 +7,7 @@ import cn.diantongren.util.ArticleDoesNotExist
 import cn.diantongren.util.AuthorizationException
 import cn.diantongren.util.UserDoesNotExists
 import cn.diantongren.util.filterIf
+import org.ktorm.dsl.and
 import org.ktorm.dsl.eq
 import org.ktorm.entity.*
 import java.time.LocalDateTime
@@ -71,19 +72,56 @@ class ArticleServiceImpl() : ArticleService {
     }
 
     override suspend fun getFeedArticles(userId: Long, filter: Map<String, String?>): List<ArticleResponse.Article> {
-        TODO("Not yet implemented")
+        val user = getUser(userId)
+        return getAllArticles(
+            user,
+            limit = filter["limit"]?.toInt() ?: 20,
+            offset = filter["offset"]?.toInt() ?: 0,
+            follows = true
+        )
     }
 
     override suspend fun changeFavorite(userId: Long, slug: String, favorite: Boolean): ArticleResponse {
-        TODO("Not yet implemented")
+        val user = getUser(userId)
+        val article = getArticleBySlug(slug)
+        if (favorite) {
+            favoriteArticle(article, user)
+        } else {
+            unFavoriteArticle(article, user)
+        }
+
+        return getArticleResponse(article, user)
     }
 
     override suspend fun deleteArticle(userId: Long, slug: String) {
-        TODO("Not yet implemented")
+        val user = getUser(userId)
+        val article = getArticleBySlug(slug)
+
+        if (!isArticleAuthor(article, user)) {
+            throw AuthorizationException()
+        }
+
+        article.delete()
     }
 
     override suspend fun getAllTags(): TagResponse {
-        TODO("Not yet implemented")
+        val tabList = database.tags.map { it.tagName }
+        return TagResponse(tabList)
+    }
+
+    private fun favoriteArticle(article: Article, user: User) {
+        if (!isFavoritedArticle(article, user)) {
+            database.favoriteArticles.add(FavoriteArticle {
+                this.article = article
+                this.user = user
+            })
+        }
+    }
+
+    private fun unFavoriteArticle(article: Article, user: User) {
+        if (isFavoritedArticle(article, user)) {
+            database.favoriteArticles.removeIf { (it.article eq article.id) and (it.user eq user.id) }
+        }
     }
 
     private fun getAllArticles(

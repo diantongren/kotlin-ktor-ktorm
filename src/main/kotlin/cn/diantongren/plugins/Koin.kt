@@ -1,5 +1,9 @@
 package cn.diantongren.plugins
 
+import cn.diantongren.service.ArticleService
+import cn.diantongren.service.AuthService
+import cn.diantongren.service.CommentService
+import cn.diantongren.service.ProfileService
 import cn.diantongren.service.impl.ArticleServiceImpl
 import cn.diantongren.service.impl.AuthServiceImpl
 import cn.diantongren.service.impl.CommentServiceImpl
@@ -9,10 +13,10 @@ import org.koin.dsl.module
 import org.koin.ktor.ext.Koin
 
 val serviceKoinModule = module {
-    single { AuthServiceImpl() }
-    single { ProfileServiceImpl() }
-    single { ArticleServiceImpl() }
-    single { CommentServiceImpl() }
+    single<AuthService> { AuthServiceImpl() }
+    single<ProfileService> { ProfileServiceImpl() }
+    single<ArticleService> { ArticleServiceImpl() }
+    single<CommentService> { CommentServiceImpl() }
 }
 
 fun Application.koin() {
